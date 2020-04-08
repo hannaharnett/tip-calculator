@@ -6,7 +6,42 @@
     <link rel="stylesheet" href="styles.css" />
     <title>TIPS</title>
   </head>
+  <div class="container">
+    <h1>TIPS</h1>
 
+    <div class="calculator-container">
+      <p>Bill</p>
+      <span class="dollar-sign">$</span>
+      <input id="bill" type="text" placeholder="0.00" />
+
+      <p>Tip %</p>
+      <button id="add-percent">+</button>
+      <span id="percentage"></span>
+      <button id="minus-percent">-</button>
+
+      <p>Number of people</p>
+      <button id="add-people">+</button>
+      <span id="num-of-people">1</span>
+      <button id="minus-people">-</button>
+    </div>
+    <!-------------->
+    <div class="result">
+      <div class="resultHalf">
+        <div class="tipAndTotal">
+          <h4>Tip</h4>
+          <p class="each">per person</p>
+        </div>
+        <h1 id="result-tip">$0.00</h1>
+      </div>
+      <div class="resultHalf">
+        <div class="tipAndTotal">
+          <h4>Total</h4>
+          <p class="each">per person</p>
+        </div>
+        <h1 id="result-total">$0.00</h1>
+      </div>
+    </div>
+  </div>
   <body></body>
   <script type="text/javascript" src="calculator.js"></script>
 </html>
