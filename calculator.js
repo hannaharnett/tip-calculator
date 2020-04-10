@@ -6,10 +6,11 @@ var tipPerPerson;
 var totalWithTip;
 
 function tip() {
-  document.getElementById("percentage").innerHTML = `${percentage}%`;
+  document.getElementById("percentage").value = `${percentage}%`;
 }
+
 function split() {
-  document.getElementById("num-of-people").innerHTML = numOfPeople;
+  document.getElementById("num-of-people").value = `${numOfPeople}`;
 }
 
 function calculate() {
@@ -28,7 +29,8 @@ function calculate() {
   ).toFixed(2)}`;
 }
 
-document.getElementById("bill").addEventListener("keyup", function(e) {
+// Bill input
+document.getElementById("bill").addEventListener("keyup", function() {
   if (event.keyCode === 13) {
     bill = document.getElementById("bill").value;
     calculate();
@@ -40,7 +42,33 @@ document.getElementById("bill").addEventListener("focusout", function() {
   calculate();
 });
 
-document.getElementById("num-of-people").innerHTML = numOfPeople;
+// Percentage input
+document.getElementById("percentage").addEventListener("keyup", function(e) {
+  if (event.keyCode === 13) {
+    percentage = parseFloat(document.getElementById("percentage").value);
+    calculate();
+  }
+});
+
+document.getElementById("percentage").addEventListener("focusout", function() {
+  percentage = parseFloat(document.getElementById("percentage").value);
+  calculate();
+});
+
+// NumOfPeople input
+document.getElementById("num-of-people").addEventListener("keyup", function(e) {
+  if (event.keyCode === 13) {
+    numOfPeople = parseFloat(document.getElementById("num-of-people").value);
+    calculate();
+  }
+});
+
+document
+  .getElementById("num-of-people")
+  .addEventListener("focusout", function() {
+    numOfPeople = parseFloat(document.getElementById("num-of-people").value);
+    calculate();
+  });
 
 document.getElementById("add-people").addEventListener("click", function() {
   if (numOfPeople < 50) {
