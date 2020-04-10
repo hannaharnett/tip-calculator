@@ -4,39 +4,64 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <title>TIPS</title>
   </head>
   <div class="container">
-    <h1>TIPS</h1>
+    <!-- <h1>TIPS</h1> -->
 
-    <div class="calculator-container">
-      <p>Bill</p>
-      <span class="dollar-sign">$</span>
-      <input id="bill" type="text" placeholder="0.00" autocomplete="off" />
+    <div class="calculator">
+      <p class="faded">Bill</p>
+      <div class="input-div">
+        <input
+          id="bill"
+          class="lg-input"
+          type="text"
+          placeholder="0.00"
+          autocomplete="off"
+        />
+      </div>
 
-      <p>Tip %</p>
-      <button id="add-percent">+</button>
-      <input id="percentage" type="text" autocomplete="off" />
-      <button id="minus-percent">-</button>
+      <p class="faded">Tip %</p>
+      <div class="input-div">
+        <div class="btn-div"><button id="minus-percent">-</button></div>
+        <input
+          id="percentage"
+          class="sm-input"
+          type="text"
+          autocomplete="off"
+        />
+        <div class="btn-div"><button id="add-percent">+</button></div>
+      </div>
 
-      <p>Number of people</p>
-      <button id="add-people">+</button>
-      <input id="num-of-people" type="text" autocomplete="off" />
-      <button id="minus-people">-</button>
+      <p class="faded">Number of people</p>
+      <div class="input-div">
+        <div class="btn-div"><button id="minus-people">-</button></div>
+        <input
+          id="num-of-people"
+          class="sm-input"
+          type="text"
+          autocomplete="off"
+        />
+        <div class="btn-div"><button id="add-people">+</button></div>
+      </div>
     </div>
     <!-------------->
     <div class="result">
       <div class="resultHalf">
         <div class="tipAndTotal">
-          <h4>Tip</h4>
-          <p class="each">per person</p>
+          <h2>Tip</h2>
+          <p class="each faded">per person</p>
         </div>
         <h1 id="result-tip">$0.00</h1>
       </div>
       <div class="resultHalf">
         <div class="tipAndTotal">
-          <h4>Total</h4>
-          <p class="each">per person</p>
+          <h2>Total</h2>
+          <p class="each faded">per person</p>
         </div>
         <h1 id="result-total">$0.00</h1>
       </div>
