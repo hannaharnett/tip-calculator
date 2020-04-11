@@ -1,19 +1,36 @@
 var bill = 0.0;
+var oldBill;
 var numOfPeople = 1;
+var oldNumOfPeople;
 var percentage = 15;
+var oldPercentage;
 var totalTip;
 var tipPerPerson;
 var totalWithTip;
 
+function billAmount() {
+  if (isNaN(bill)) {
+    bill = oldBill;
+  }
+  document.getElementById("bill").value = `${bill}.00`;
+}
+
 function tip() {
+  if (isNaN(percentage)) {
+    percentage = oldPercentage;
+  }
   document.getElementById("percentage").value = `${percentage}%`;
 }
 
 function split() {
+  if (isNaN(numOfPeople)) {
+    numOfPeople = oldNumOfPeople;
+  }
   document.getElementById("num-of-people").value = `${numOfPeople}`;
 }
 
 function calculate() {
+  billAmount();
   tip();
   split();
   totalTip = (bill * percentage) / 100;
@@ -29,16 +46,24 @@ function calculate() {
   ).toFixed(2)}`;
 }
 
+function saveOldInput(id) {
+  return parseFloat(document.getElementById(id).value);
+}
+
 // Bill input
 document.getElementById("bill").addEventListener("keyup", function() {
   if (event.keyCode === 13) {
-    bill = document.getElementById("bill").value;
+    bill = parseFloat(document.getElementById("bill").value);
     calculate();
   }
 });
 
+document.getElementById("bill").addEventListener("focusin", function() {
+  oldBill = saveOldInput("bill");
+});
+
 document.getElementById("bill").addEventListener("focusout", function() {
-  bill = document.getElementById("bill").value;
+  bill = parseFloat(document.getElementById("bill").value);
   calculate();
 });
 
@@ -48,6 +73,10 @@ document.getElementById("percentage").addEventListener("keyup", function(e) {
     percentage = parseFloat(document.getElementById("percentage").value);
     calculate();
   }
+});
+
+document.getElementById("percentage").addEventListener("focusin", function() {
+  oldPercentage = saveOldInput("percentage");
 });
 
 document.getElementById("percentage").addEventListener("focusout", function() {
@@ -62,6 +91,12 @@ document.getElementById("num-of-people").addEventListener("keyup", function(e) {
     calculate();
   }
 });
+
+document
+  .getElementById("num-of-people")
+  .addEventListener("focusin", function() {
+    oldNumOfPeople = saveOldInput("num-of-people");
+  });
 
 document
   .getElementById("num-of-people")
