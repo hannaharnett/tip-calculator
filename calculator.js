@@ -8,24 +8,22 @@ var totalTip;
 var tipPerPerson;
 var totalWithTip;
 
+function isItNaN(value, oldValue) {
+  return isNaN(value) ? oldValue : value;
+}
+
 function billAmount() {
-  if (isNaN(bill)) {
-    bill = oldBill;
-  }
+  bill = isItNaN(bill, oldBill);
   document.getElementById("bill").value = `${bill}.00`;
 }
 
 function tip() {
-  if (isNaN(percentage)) {
-    percentage = oldPercentage;
-  }
+  percentage = isItNaN(percentage, oldPercentage);
   document.getElementById("percentage").value = `${percentage}%`;
 }
 
 function split() {
-  if (isNaN(numOfPeople)) {
-    numOfPeople = oldNumOfPeople;
-  }
+  numOfPeople = isItNaN(numOfPeople, oldNumOfPeople);
   document.getElementById("num-of-people").value = `${numOfPeople}`;
 }
 
@@ -46,97 +44,104 @@ function calculate() {
   ).toFixed(2)}`;
 }
 
-function saveOldInput(id) {
+function saveInput(id) {
   return parseFloat(document.getElementById(id).value);
 }
 
-// Bill input
-document.getElementById("bill").addEventListener("keyup", function() {
-  if (event.keyCode === 13) {
-    bill = parseFloat(document.getElementById("bill").value);
+const inputs = document.querySelector(".calculator");
+// Keyup Events
+inputs.addEventListener("keyup", function(event) {
+  let { target, keyCode } = event;
+  if (keyCode !== 13) {
+    return;
+  }
+
+  if (target.id === "bill") {
+    bill = saveInput("bill");
+    calculate();
+  }
+
+  if (target.id === "percentage") {
+    percentage = saveInput("percentage");
+    calculate();
+  }
+
+  if (target.id === "num-of-people") {
+    numOfPeople = saveInput("num-of-people");
     calculate();
   }
 });
 
-document.getElementById("bill").addEventListener("focusin", function() {
-  oldBill = saveOldInput("bill");
+// Focusin Events
+inputs.addEventListener("focusin", function(event) {
+  let { target } = event;
+  if (!target.matches("input")) {
+    return;
+  }
+
+  if (target.id === "bill") {
+    oldBill = saveInput("bill");
+  }
+
+  if (target.id === "percentage") {
+    oldPercentage = saveInput("percentage");
+  }
+
+  if (target.id === "num-of-people") {
+    oldNumOfPeople = saveInput("num-of-people");
+  }
 });
 
-document.getElementById("bill").addEventListener("focusout", function() {
-  bill = parseFloat(document.getElementById("bill").value);
-  calculate();
-});
+// Focusout Events
+inputs.addEventListener("focusout", function(event) {
+  let { target } = event;
+  if (!target.matches("input")) {
+    return;
+  }
 
-// Percentage input
-document.getElementById("percentage").addEventListener("keyup", function(e) {
-  if (event.keyCode === 13) {
-    percentage = parseFloat(document.getElementById("percentage").value);
+  if (target.id === "bill") {
+    bill = saveInput("bill");
+    calculate();
+  }
+
+  if (target.id === "percentage") {
+    percentage = saveInput("percentage");
+    calculate();
+  }
+
+  if (target.id === "num-of-people") {
+    numOfPeople = saveInput("num-of-people");
     calculate();
   }
 });
 
-document.getElementById("percentage").addEventListener("focusin", function() {
-  oldPercentage = saveOldInput("percentage");
-});
+// Button clicks
+const buttons = document.querySelector(".calculator");
+buttons.addEventListener("click", function(event) {
+  let { target } = event;
+  if (!target.matches("button")) {
+    return;
+  }
 
-document.getElementById("percentage").addEventListener("focusout", function() {
-  percentage = parseFloat(document.getElementById("percentage").value);
-  calculate();
-});
-
-// NumOfPeople input
-document.getElementById("num-of-people").addEventListener("keyup", function(e) {
-  if (event.keyCode === 13) {
-    numOfPeople = parseFloat(document.getElementById("num-of-people").value);
+  if (target.id === "add-percent") {
+    percentage < 100 ? percentage++ : (percentage = 100);
     calculate();
   }
-});
 
-document
-  .getElementById("num-of-people")
-  .addEventListener("focusin", function() {
-    oldNumOfPeople = saveOldInput("num-of-people");
-  });
-
-document
-  .getElementById("num-of-people")
-  .addEventListener("focusout", function() {
-    numOfPeople = parseFloat(document.getElementById("num-of-people").value);
+  if (target.id === "minus-percent") {
+    percentage > 0 ? percentage-- : (percentage = 0);
     calculate();
-  });
+  }
 
-document.getElementById("add-people").addEventListener("click", function() {
-  if (numOfPeople < 50) {
-    numOfPeople++;
-  } else {
-    numOfPeople = 50;
+  if (target.id === "add-people") {
+    numOfPeople < 50 ? numOfPeople++ : (numOfPeople = 50);
+    calculate();
   }
-  calculate();
-});
-document.getElementById("minus-people").addEventListener("click", function() {
-  if (numOfPeople > 1) {
-    numOfPeople--;
-  } else {
-    numOfPeople = 1;
-  }
-  calculate();
-});
 
-document.getElementById("add-percent").addEventListener("click", function() {
-  if (percentage < 100) {
-    percentage++;
-  } else {
-    percentage = 100;
+  if (target.id === "minus-people") {
+    numOfPeople > 1 ? numOfPeople-- : (numOfPeople = 1);
+    calculate();
   }
-  calculate();
-});
-document.getElementById("minus-percent").addEventListener("click", function() {
-  if (percentage > 0) {
-    percentage--;
-  } else {
-    percentage = 0;
-  }
-  calculate();
 });
 
 calculate();
