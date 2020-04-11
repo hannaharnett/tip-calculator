@@ -12,21 +12,9 @@ function isItNaN(value, oldValue) {
   return isNaN(value) ? oldValue : value;
 }
 
-function addZeroes(num) {
-  var value = String(num);
-  var result = value.split(".");
-
-  if (result.length == 1 || result[1].length < 3) {
-    num = num.toFixed(2);
-  } else {
-    num = num.toFixed(2);
-  }
-  return num;
-}
-
 function billAmount() {
   bill = isItNaN(bill, oldBill);
-  document.getElementById("bill").value = addZeroes(bill);
+  document.getElementById("bill").value = bill.toFixed(2);
 }
 
 function tip() {
