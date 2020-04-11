@@ -33,6 +33,11 @@ function calculate() {
   split();
   totalTip = (bill * percentage) / 100;
 
+  // Add 'per person' text when splitting bill
+  document.querySelectorAll(".each").forEach(function(item) {
+    item.innerHTML = numOfPeople > 1 ? "per person" : "";
+  });
+
   tipPerPerson = totalTip / numOfPeople;
   document.getElementById("result-tip").innerHTML = `$ ${parseFloat(
     tipPerPerson
