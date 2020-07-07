@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A tip calculator that let's you divide tip amount between a set amount of people.">
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap"
@@ -10,57 +11,57 @@
     />
     <title>TIPS</title>
   </head>
-  <div class="container">
-    <!-- <h1>TIPS</h1> -->
+  <body>
+    <main class="container">
 
-    <div class="calculator">
-      <p class="faded">Bill</p>
-      <div class="input-div">
-        <input id="bill" class="lg-input" type="text" autocomplete="off" />
-      </div>
-
-      <p class="faded">Tip %</p>
-      <div class="input-div">
-        <div class="btn-div"><button id="minus-percent">-</button></div>
-        <input
-          id="percentage"
-          class="sm-input"
-          type="text"
-          autocomplete="off"
-        />
-        <div class="btn-div"><button id="add-percent">+</button></div>
-      </div>
-
-      <p class="faded">Number of people</p>
-      <div class="input-div">
-        <div class="btn-div"><button id="minus-people">-</button></div>
-        <input
-          id="num-of-people"
-          class="sm-input"
-          type="text"
-          autocomplete="off"
-        />
-        <div class="btn-div"><button id="add-people">+</button></div>
-      </div>
-    </div>
-    <!-------------->
-    <div class="result">
-      <div class="resultHalf">
-        <div class="tipAndTotal">
-          <h2>Tip</h2>
-          <p class="faded each"></p>
+      <section class="calculator">
+        <label for="bill" class="faded">Bill amount</label>
+        <div class="input-div">
+          <input id="bill" class="lg-input" type="text" autocomplete="off" />
         </div>
-        <h1 id="result-tip">$0.00</h1>
-      </div>
-      <div class="resultHalf">
-        <div class="tipAndTotal">
-          <h2>Total</h2>
-          <p class="faded each"></p>
+  
+        <label for="percentage" class="faded">Tip %</label>
+        <div class="input-div">
+          <div class="btn-div"><button id="minus-percent">-</button></div>
+          <input
+            id="percentage"
+            class="sm-input"
+            type="text"
+            autocomplete="off"
+          />
+          <div class="btn-div"><button id="add-percent">+</button></div>
         </div>
-        <h1 id="result-total">$0.00</h1>
-      </div>
-    </div>
-  </div>
-  <body></body>
+  
+        <label for="num-of-people" class="faded">Number of people</label>
+        <div class="input-div">
+          <div class="btn-div"><button id="minus-people">-</button></div>
+          <input
+            id="num-of-people"
+            class="sm-input"
+            type="text"
+            autocomplete="off"
+          />
+          <div class="btn-div"><button id="add-people">+</button></div>
+        </div>
+      </section>
+      <!-------------->
+      <section class="result">
+        <div class="resultHalf">
+          <div class="tipAndTotal">
+            <h2>Tip</h2>
+            <p class="faded each"></p>
+          </div>
+          <h1 id="result-tip">$0.00</h1>
+        </div>
+        <div class="resultHalf">
+          <div class="tipAndTotal">
+            <h2>Total</h2>
+            <p class="faded each"></p>
+          </div>
+          <h1 id="result-total">$0.00</h1>
+        </div>
+      </section>
+    </main>
+  </body>
   <script type="text/javascript" src="calculator.js"></script>
 </html>

@@ -1,12 +1,17 @@
 var bill = 0.0;
 var oldBill;
+var billInput = document.getElementById("bill");
 var numOfPeople = 1;
+var numOfPeopleInput = document.getElementById("num-of-people");
 var oldNumOfPeople;
 var percentage = 15;
 var oldPercentage;
+var percentageInput = document.getElementById("percentage");
 var totalTip;
 var tipPerPerson;
 var totalWithTip;
+
+billInput.focus();
 
 function isItNaN(value, oldValue) {
   return isNaN(value) ? oldValue : value;
@@ -14,17 +19,17 @@ function isItNaN(value, oldValue) {
 
 function billAmount() {
   bill = isItNaN(bill, oldBill);
-  document.getElementById("bill").value = bill.toFixed(2);
+  billInput.value = bill.toFixed(2);
 }
 
 function tip() {
   percentage = isItNaN(percentage, oldPercentage);
-  document.getElementById("percentage").value = `${percentage}%`;
+  percentageInput.value = `${percentage}%`;
 }
 
 function split() {
   numOfPeople = isItNaN(numOfPeople, oldNumOfPeople);
-  document.getElementById("num-of-people").value = `${numOfPeople}`;
+  numOfPeopleInput.value = `${numOfPeople}`;
 }
 
 function calculate() {
