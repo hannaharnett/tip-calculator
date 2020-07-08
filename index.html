@@ -12,7 +12,7 @@
     <title>TIPS</title>
   </head>
   <body>
-    <main class="container">
+    <main class="container" role="region" id="result" aria-live="polite">
 
       <section class="calculator">
         <label for="bill" class="faded">Bill amount</label>
@@ -22,43 +22,37 @@
   
         <label for="percentage" class="faded">Tip %</label>
         <div class="input-div">
-          <div class="btn-div"><button id="minus-percent">-</button></div>
+          <div class="btn-div"><button id="minus-percent" aria-label="decrement tip">-</button></div>
           <input
             id="percentage"
             class="sm-input"
             type="text"
             autocomplete="off"
           />
-          <div class="btn-div"><button id="add-percent">+</button></div>
+          <div class="btn-div"><button id="add-percent" aria-label="increment tip">+</button></div>
         </div>
   
         <label for="num-of-people" class="faded">Number of people</label>
         <div class="input-div">
-          <div class="btn-div"><button id="minus-people">-</button></div>
+          <div class="btn-div"><button id="minus-people" aria-label="decrement number of people">-</button></div>
           <input
             id="num-of-people"
             class="sm-input"
             type="text"
             autocomplete="off"
           />
-          <div class="btn-div"><button id="add-people">+</button></div>
+          <div class="btn-div"><button id="add-people" aria-label="increment number of people">+</button></div>
         </div>
       </section>
       <!-------------->
       <section class="result">
         <div class="resultHalf">
-          <div class="tipAndTotal">
-            <h2>Tip</h2>
-            <p class="faded each"></p>
-          </div>
           <h1 id="result-tip">$0.00</h1>
+          <p class="faded each"></p>
         </div>
         <div class="resultHalf">
-          <div class="tipAndTotal">
-            <h2>Total</h2>
-            <p class="faded each"></p>
-          </div>
           <h1 id="result-total">$0.00</h1>
+          <p class="faded each"></p>
         </div>
       </section>
     </main>

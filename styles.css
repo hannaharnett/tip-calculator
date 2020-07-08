@@ -99,9 +99,14 @@ h1 {
 
 .resultHalf {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   margin: 10px;
   align-items: flex-end;
+}
+
+h1 span {
+  position: absolute;
+  left: 50%;
 }
 
 .faded {
@@ -123,5 +128,13 @@ h1 {
   .result {
     border-top: solid 0.5px #dfdde0;
     border-left: none;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h1 span {
+    left: 10%;
   }
 }

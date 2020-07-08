@@ -45,12 +45,12 @@ function calculate() {
 
   tipPerPerson = totalTip / numOfPeople;
 
-  document.getElementById("result-tip").innerHTML = `$ ${parseFloat(
+  document.getElementById("result-tip").innerHTML = `<span>Tip</span> $ ${parseFloat(
     tipPerPerson
   ).toFixed(2)}`;
 
   totalWithTip = tipPerPerson + bill / numOfPeople;
-  document.getElementById("result-total").innerHTML = `$ ${parseFloat(
+  document.getElementById("result-total").innerHTML = `<span>Total</span> $ ${parseFloat(
     totalWithTip
   ).toFixed(2)}`;
 }
